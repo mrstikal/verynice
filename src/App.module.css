@@ -1,0 +1,42 @@
+.auto_margin {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.outer_wrapper {
+    width: 100%;
+    max-width: 2560px;
+    padding-left: 30px;
+    padding-right: 30px;
+    box-sizing: border-box;
+}
+
+.inner_wrapper {
+    max-width: 1280px;
+}
+
+.top_decorator {
+    background-color: #242426;
+    height: 15px;
+}
+
+.bottom_decorator {
+    background-color: #242426;
+    height: 20px;
+}
+
+.logo, .logo_footer {
+    width: 148px;
+    height: 42px;
+    background-size: contain;
+    background-position: left center;
+    background-image: url(./assets/image/logo.svg);
+    top: 3px;
+    flex-grow: 0;
+    flex-shrink: 0;
+    background-repeat: no-repeat;
+}
+
+.logo_footer {
+    top: -1px;
+}

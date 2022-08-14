@@ -1,0 +1,14 @@
+.page_content_wrapper {
+    min-height: calc(100vh - 219px);
+    padding-top: 60px;
+    padding-bottom: 90px;
+    box-sizing: border-box;
+}
+
+@media screen and (max-width: 2560px) {
+
+    .page_content_wrapper {
+        padding-top: calc(40px + (60 - 40) * ((100vw - 320px) / (2560 - 320)));
+    }
+    
+}

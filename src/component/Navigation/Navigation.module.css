@@ -1,0 +1,112 @@
+.menu_wrapper, .responsive_menu_wrapper {
+    display: flex;
+    flex-shrink: 1;
+    flex-grow: 1;
+    justify-content: flex-end;
+    align-items: center;
+    width: 100%;
+}
+
+.responsive_menu_holder {
+    position: absolute;
+    top: 62px;
+    width: calc(100% + 148px);
+    background-color: rgba(255, 255, 255, 0.95);
+    left: -148px;
+    text-align: center;
+    padding-bottom: 15px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    min-height: calc(100vh - 92px);
+}
+
+.menu_item {
+    margin-left: 50px;
+    height: 65px;
+    cursor: pointer;
+    font-weight: 400;
+    font-size: 17px;
+    top: 4px;
+    display: flex;
+    align-items: center;
+}
+
+.responsive_menu_item {
+    width: 100%;
+    font-size: 18px;
+    font-weight: 400;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    text-align: center;
+    display: inline-block;
+    width: fit-content;
+}
+
+.responsive_menu_item.active:after {
+    content: '';
+    display: block;
+    position: absolute;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background-color: #2e2e34;
+    top: 47px;
+}
+
+.menu_item.active:after, .menu_item:hover::after {
+    content: '';
+    display: block;
+    position: absolute;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background-color: #2e2e34;
+    top: 75px;
+}
+
+.menu_wrapper.responsive {
+    visibility: hidden;
+}
+
+.open_menu_icon {
+    width: 30px;
+    height: 24px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    cursor: pointer;
+    top: 2px;
+}
+
+.menu_element {
+    width: 30px;
+    height: 2px;
+    background-color: #242426;
+}
+
+.close_menu_icon {
+    width: 30px;
+    height: 30px;
+    display: flex;
+    cursor: pointer;
+    top: 0px;
+}
+
+.rotated_menu_element_a, .rotated_menu_element_b {
+    width: 33px;
+    height: 2px;
+    background-color: #242426;
+    transform-origin: center;
+    position: absolute;
+    top: 50%;
+}
+
+.rotated_menu_element_a {
+    transform: rotate(45deg);
+}
+
+.rotated_menu_element_b {
+    transform: rotate(-45deg);
+}
