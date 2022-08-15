@@ -1,0 +1,38 @@
+.modal_wrapper {
+    position: fixed;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.7);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal_inner {
+    max-width: 600px;
+    background-color: #fff;
+    text-align: center;
+    padding: 60px 40px 30px 40px;
+}
+
+.modal_heading {
+    font-size: 24px;
+}
+
+.modal_text {
+    white-space: pre-line;
+    font-size: 16px;
+    font-weight: 400;
+    color: #87888f;
+    line-height: 1.6;
+}
+
+.modal_close {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    font-size: 25px;
+    cursor: pointer;
+}

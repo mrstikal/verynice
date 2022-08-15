@@ -1,0 +1,104 @@
+.select_element_container {
+    min-width: 100%;
+    height: 40px;
+    border: 1px solid #242426 !important;
+    font-size: 15px;
+    margin-bottom: 15px;
+    font-weight: 400;
+}
+
+.select_element__control {
+    border-radius: 0px !important;
+    border-width: 0px !important;
+    min-height: 0 !important;
+    outline: none;
+    height: 38px;
+}
+
+.select_element__control:focus, .select_element__control--is-focused {
+    border-width: 0px !important;
+    border-style: none !important;
+    box-shadow: none !important;
+}
+
+.select_element__indicator-separator {
+    display: none;
+}
+
+.select_element__input {
+    width: 0;
+    height: 0;
+}
+
+.select_element__value-container {
+    padding: 0 0 0 12px !important;
+}
+
+.select_element__input-container {
+    margin: 0 !important;
+}
+
+.select_element__dropdown-indicator {
+    padding: 5px !important;
+}
+
+.select_element__menu {
+    margin-top: 0 !important;
+    border-radius: 0 !important;
+    min-width: 100%;
+}
+
+.select_element__menu-list {
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
+    max-height: 600px !important;
+}
+
+.select_element__option {
+    font-size: 15px !important;
+    white-space: nowrap;
+    font-weight: 400;
+}
+
+.select_element__option--is-focused, .select_element__option--menu-is-open {
+    background-color: #242426 !important;
+    color: #fff !important;
+}
+
+.select_element__option--is-selected {
+    background-color: #242426 !important;
+    color: #fff !important;
+}
+
+.select_element__menu-portal {
+    margin-top: 1px;
+}
+
+.select_element__menu {
+    position: relative !important;
+    border: 1px solid #242426 !important;
+    box-shadow: none !important;
+    box-sizing: content-box !important;
+    left: -1px;
+}
+
+.width_setter_select {
+    font-size: 15px;
+    padding: 0 12px;
+    position: absolute;
+    top: -15px;
+    white-space: nowrap;
+    opacity: 0;
+    font-weight: 400;
+}
+
+.select_element__placeholder, .select_element__single-value {
+    font-size: 15px;
+    color: #333 !important;
+    font-weight: 400;
+    line-height: 1;
+}
+
+.select_element__indicator svg {
+    color: #8f8f97 !important;
+}

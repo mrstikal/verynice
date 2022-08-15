@@ -19,3 +19,19 @@
     text-decoration: underline;
     cursor: pointer;
 }
+
+@media screen and (max-width: 500px) {
+
+    .footer_wrapper {
+        flex-direction: column;
+        height: 150px;
+        padding-top: 30px;
+        justify-content: flex-start;
+    }
+
+    .credit {
+        text-align: center;
+        padding-top: 30px;
+    }
+
+}
