@@ -1,3 +1,4 @@
+/* interface for product type */
 export default interface IProduct {
     id: number,
     name: string,

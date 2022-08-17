@@ -16,6 +16,7 @@
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-image-and-background-image-fade": "^1.0.8",
+    "react-lazyload": "^3.2.0",
     "react-redux": "^8.0.2",
     "react-scripts": "5.0.1",
     "react-select": "^5.4.0",
@@ -49,6 +50,7 @@
   "devDependencies": {
     "@types/gsap": "^3.0.0",
     "@types/lodash": "^4.14.182",
+    "@types/react-lazyload": "^3.2.0",
     "@types/webpack-env": "^1.17.0"
   }
 }

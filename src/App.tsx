@@ -1,4 +1,4 @@
-import React, { useState, useEffect, lazy } from 'react'
+import React, { useState, useEffect, lazy, LazyExoticComponent, ComponentType } from 'react'
 import Header from './component/Header/Header'
 import Footer from './component/Footer/Footer'
 import PageContent from './component/PageContent/PageContent'
@@ -7,16 +7,22 @@ import PagesConfig from './config/PagesConfig'
 
 function App() {
 
+    /* config for all pages in app */
     const [pages, setPages] = useState<any>([]);
+
+    /* set current page index */
     const [currentPage, setCurrentPage] = useState(0);
-    const [menuItems, setMenuItems] = useState<any>([])
+
+    /* menu items imported from page config */
+    const [menuItems, setMenuItems] = useState<Array<{ index: number, text: string }>>([])
 
     useEffect(() => {
 
-        const importedPages: any[] = [];
-        const importedMenuItems: any[] = [];
+        const importedPages: LazyExoticComponent<ComponentType<any>>[] = [];
+        const importedMenuItems: Array<{ index: number, text: string }> = [];
 
-        const importPages = async () => {
+        /* imports pages and setup menu items from the configuration file */
+        const importPages = async (): Promise<any> => {
             PagesConfig.forEach(async (value: any, index: number) => {
                 const importedComponent = lazy(() => import('./component/Pages/' + value.templage + '/' + value.templage))
                 importedPages.push(importedComponent)
@@ -32,7 +38,8 @@ function App() {
 
     }, [])
 
-    const pageChangeHandler = (index: number) => {
+    /* switch to another page - implemented in Header component */
+    const pageChangeHandler = (index: number): void => {
         setCurrentPage(index)
     }
 

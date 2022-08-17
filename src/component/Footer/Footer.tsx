@@ -5,6 +5,7 @@ import Modal from '../Modal/Modal'
 
 const Footer = () => {
 
+    /* controlls modal state (opened/closed) */
     const [modalOpened, setModalOpened] = useState(false)
 
     return (

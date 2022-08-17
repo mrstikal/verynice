@@ -1,11 +1,14 @@
-import React, { useState } from 'react'
+import React from 'react'
 import styles from './Modal.module.css'
+
 
 interface IModal {
     heading: string,
     text: string,
-    closeHandler: any
+    closeHandler: (param: boolean) => void
 }
+
+/* nothing special is happening here, we are just returning modal content based on props */
 
 const Modal = (props: IModal) => {
 

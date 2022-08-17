@@ -1,3 +1,5 @@
+/* config file for pages */
+
 interface IPageConfigItem {
     id: number, title: string, templage: string
 }

@@ -1,28 +1,32 @@
 import React, { useEffect, useLayoutEffect, useState, useRef } from 'react';
 import styles from './Navigation.module.css';
+import { IHeader } from '../Header/Header'
 
 
-const Navigation = (props: any) => {
-
-    const menuRef = useRef<HTMLDivElement>(null)
+const Navigation = (props: IHeader) => {
 
     const { menuItems, currentPage, pageChangeHandler } = props
+
+    /* reference to menu component */
+    const menuRef = useRef<HTMLDivElement>(null)
 
     const [width, setWidth] = useState(0)
     const [isResponsive, setIsResponsive] = useState(false);
     const [menuOpened, setMenuOpened] = useState(false)
 
+    /* handle window resize to display the normal/responsive menu */
     const handleWindowResize = () => {
         setWidth(window.innerWidth)
     }
 
-    const closeOpenMenu = (e: any) => {
-        //@ts-ignore
-        if (menuRef.current && menuOpened && !menuRef.current.contains(e.target)) {
+    /* close responsive menu on click outside */
+    const closeOpenMenu = ({target}: MouseEvent) => {
+        if (menuRef.current && menuOpened && !menuRef.current?.contains(target as Node)) {
             setMenuOpened(false)
         }
     }
 
+    /* add event listeners for window resize and mouse down on responsive menu */
     useEffect(() => {
         window.addEventListener('resize', handleWindowResize)
         document.addEventListener('mousedown', closeOpenMenu)
@@ -33,16 +37,18 @@ const Navigation = (props: any) => {
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 
+    /* set width state to window width */
     useLayoutEffect(() => {
         setWidth(window.innerWidth)
     }, [])
 
+    /* switch between normal and responsive menu layout */
     useLayoutEffect(() => {
 
         let menuWidth = undefined;
 
         const menu = menuRef.current;
-        
+
         if (menu) {
             menuWidth = menu.clientWidth;
         }
@@ -52,7 +58,6 @@ const Navigation = (props: any) => {
         } else {
             setIsResponsive(false)
         }
-
 
     }, [width])
 

@@ -3,15 +3,11 @@ import Navigation from '../Navigation/Navigation'
 import global_styles from '../../App.module.css';
 import styles from './Header.module.css';
 
-type menuItemsType = {
-    index: number;
-    text: undefined;
-}
 
 interface IHeader {
     currentPage: number,
-    menuItems: menuItemsType[],
-    pageChangeHandler(e: number): any
+    menuItems: Array<{index: number, text: undefined | string;}>,
+    pageChangeHandler(e: number): void
 }
 
 const Header = (props: IHeader) => {
