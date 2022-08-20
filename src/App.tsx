@@ -1,64 +1,59 @@
-import React, { useState, useEffect, lazy, LazyExoticComponent, ComponentType } from 'react'
+import React, { createContext, useState } from 'react'
 import Header from './component/Header/Header'
 import Footer from './component/Footer/Footer'
 import PageContent from './component/PageContent/PageContent'
+import SingleProduct from './component/SingleProduct/SingleProduct'
 import PagesConfig from './config/PagesConfig'
+import ProductConfig, { orderByOptions, filterOptions } from './config/ProductConfig'
+import { Routes, Route } from "react-router-dom"
 
+/* we need to use global variables for catalog when catalog component is unmouted */
+export const remeberedCatalogSettings = createContext<any>({
+    filter: undefined,
+    setFilter: () => { },
+    order: undefined,
+    setOrder: () => { },
+});
 
 function App() {
 
-    /* config for all pages in app */
-    const [pages, setPages] = useState<any>([]);
+    const menuItems: Array<{ index: number, text: string, url: string }> = [];
 
-    /* set current page index */
-    const [currentPage, setCurrentPage] = useState(0);
+    /* create menu items from import page configuration */
+    PagesConfig.forEach((value: any, index: number) => {
+        const menuItem = { index: index, text: value.title, url: value.url }
+        menuItems.push(menuItem)
+    })
 
-    /* menu items imported from page config */
-    const [menuItems, setMenuItems] = useState<Array<{ index: number, text: string }>>([])
-
-    useEffect(() => {
-
-        const importedPages: LazyExoticComponent<ComponentType<any>>[] = [];
-        const importedMenuItems: Array<{ index: number, text: string }> = [];
-
-        /* imports pages and setup menu items from the configuration file */
-        const importPages = async (): Promise<any> => {
-            PagesConfig.forEach(async (value: any, index: number) => {
-                const importedComponent = lazy(() => import('./component/Pages/' + value.templage + '/' + value.templage))
-                importedPages.push(importedComponent)
-                const menuItem = { index: index, text: value.title }
-                importedMenuItems.push(menuItem)
-            })
-
-            setPages(importedPages)
-            setMenuItems(importedMenuItems)
-        }
-
-        importPages();
-
-    }, [])
-
-    /* switch to another page - implemented in Header component */
-    const pageChangeHandler = (index: number): void => {
-        setCurrentPage(index)
-    }
+    /* defaults for catalog page */
+    const [filter, setFilter] = useState(filterOptions[0])
+    const [order, setOrder] = useState(orderByOptions[0])
 
     return (
-        <div className="App">
-            <Header
-                currentPage={currentPage}
-                menuItems={menuItems}
-                pageChangeHandler={pageChangeHandler}
-            />
+        <remeberedCatalogSettings.Provider value={{ filter, setFilter, order, setOrder }}>
+            <div className="App">
+                <>
+                    <Header />
 
-            <PageContent
-                currentPage={currentPage}
-                pages={pages}
-            />
+                    <Routes>
+                        {(Array.isArray(menuItems) && menuItems.length > 0) && menuItems.map((item: any, index: number) => {
+                            return (
+                                <Route key={index} path={item.url} element={<PageContent />} />
+                            )
+                        })}
+                        {(Array.isArray(ProductConfig) && ProductConfig.length > 0) && ProductConfig.map((item: any, index: number) => {
+                            return (
+                                <Route key={index} path={item.url} element={<SingleProduct />} />
+                            )
+                        })}
+                    </Routes>
 
-            <Footer />
+                    <Footer />
 
-        </div>
+                </>
+
+            </div>
+        </remeberedCatalogSettings.Provider>
     )
 }
 

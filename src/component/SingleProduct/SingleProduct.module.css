@@ -1,0 +1,130 @@
+
+.one_selected_product {
+    max-width: 1200px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: calc(40px + 2vw);
+    padding-bottom: calc(80px + 5vw);
+}
+
+.one_selected_product_image {
+    max-width: 800px;
+}
+
+.one_selected_product_image img {
+    display: block;
+    width: 100%;
+    height: auto;
+}
+
+.one_selected_product_name {
+    font-size: 37px;
+    margin-top: calc(16px + 0.8vw);
+    text-align: center;
+}
+
+.one_selected_product_text, .one_selected_product_price {
+    text-align: center;
+    font-size: 18px;
+    margin-top: calc(16px + 0.8vw);
+    max-width: 620px;
+    white-space: pre-line;
+    line-height: 1.4;
+}
+
+.one_selected_product_price {
+    font-weight: 400;
+}
+
+.one_selected_product_buttons {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 30px 30px;
+    margin-top: calc(45px + 1vw);
+}
+
+.one_selected_product_button, .form_button {
+    border: 1px solid #242426;
+    padding: 10px 30px;
+    text-align: center;
+    cursor: pointer;
+    font-size: 24px;
+    transition: all 0.3s;
+    color: #242426;
+    text-decoration: none;
+}
+
+.one_selected_product_button:hover, .form_button:hover {
+    background-color: #242426;
+    color: #fff;
+}
+
+.form_holder {
+    width: 100%;
+    max-width: 400px;
+    margin-top: calc(45px + 1vw);
+}
+
+.form_holder .one_selected_product_name {
+    padding-bottom: 20px;
+}
+
+.input {
+    display: block;
+    width: 100%;
+    border: 1px solid #242426;
+    padding: 10px 15px;
+    font-size: 18px;
+    margin-bottom: 20px;
+    box-sizing: border-box;
+}
+
+.form_button {
+    display: inline-block;
+}
+
+.not_required, .error_message {
+    white-space: pre-line;
+    font-weight: 400;
+    margin-bottom: calc(16px + 0.8vw);
+}
+
+.return_to_catalog {
+    cursor: pointer;
+    text-decoration: underline;
+    color: #242426;
+}
+
+h1.light {
+    font-size: 90px;
+    margin-bottom: calc(20px + 1.2vw);
+    line-height: 1.2;
+    font-weight: 100;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+}
+
+
+@media screen and (max-width: 2560px) {
+
+    h1.light {
+        font-size: calc(35px + (90 - 35) * ((100vw - 320px) / (2560 - 320)));
+    }
+    .one_selected_product_name {
+        font-size: calc(30px + (37 - 30) * ((100vw - 320px) / (2560 - 320)));
+    }
+
+    .one_selected_product_button {
+        font-size: calc(18px + (22 - 18) * ((100vw - 320px) / (2560 - 320)));
+    }
+
+}
+
+@media screen and (max-width: 670px) {
+
+    .one_selected_product_buttons {
+        grid-template-columns: repeat(1, 1fr);
+    }
+}

@@ -31,6 +31,8 @@
     top: 4px;
     display: flex;
     align-items: center;
+    color: #242426;
+    text-decoration: none;
 }
 
 .responsive_menu_item {
@@ -42,6 +44,8 @@
     text-align: center;
     display: inline-block;
     width: fit-content;
+    color: #242426;
+    text-decoration: none;
 }
 
 .responsive_menu_item.active:after {

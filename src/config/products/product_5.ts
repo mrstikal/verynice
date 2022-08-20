@@ -8,7 +8,8 @@ const product_5: IProduct = {
     price: 9,
     popularity: 2,
     categories: ['Krajiny', 'Hory'],
-    image: '07.jpg'
+    image: '07.jpg',
+    url: 'katalog/vodopad-s-mostem'
 }
 
 export default product_5;

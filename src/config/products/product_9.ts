@@ -8,7 +8,8 @@ const product_9: IProduct = {
     price: 30,
     popularity: 9,
     categories: ['Hory', 'Vodní hladiny', 'Krajiny'],
-    image: '16.jpg'
+    image: '16.jpg',
+    url: 'katalog/hory-a-jezero'
 }
 
 export default product_9;

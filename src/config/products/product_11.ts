@@ -9,7 +9,8 @@ const product_11: IProduct = {
     price: 15,
     popularity: 10,
     categories: ['Krajiny', 'Cesty'],
-    image: '39.jpg'
+    image: '39.jpg',
+    url: 'katalog/pro-eko-motoristy'
 }
 
 export default product_11;

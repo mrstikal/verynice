@@ -6,5 +6,6 @@ export default interface IProduct {
     price: number,
     popularity: number,
     categories: string[],
-    image: string
+    image: string,
+    url: string,
 }

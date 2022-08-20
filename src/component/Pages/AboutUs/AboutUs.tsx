@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { memo } from 'react'
 import styles from './AboutUs.module.css'
 import image1 from '../../../assets/image/a.jpg'
 import image2 from '../../../assets/image/c.jpg'
@@ -23,7 +23,7 @@ const AboutUs = () => {
             </div>
 
             <div className={styles.image}>
-            <LazyLoad offset={-200} height={250} resize={true} placeholder={<Preloader />}>
+                <LazyLoad height={250} resize={true} placeholder={<Preloader />}>
                     <img src={image1} alt=''></img>
                 </LazyLoad>
             </div>
@@ -36,7 +36,7 @@ const AboutUs = () => {
             </div>
 
             <div className={styles.image}>
-            <LazyLoad offset={-200} height={250} resize={true} placeholder={<Preloader />}>
+                <LazyLoad height={250} resize={true} placeholder={<Preloader />}>
                     <img src={image2} alt=''></img>
                 </LazyLoad>
             </div>
@@ -49,7 +49,7 @@ const AboutUs = () => {
             </div>
 
             <div className={styles.image}>
-            <LazyLoad offset={-200} height={250} resize={true} placeholder={<Preloader />}>
+                <LazyLoad height={250} resize={true} placeholder={<Preloader />}>
                     <img src={image3} alt=''></img>
                 </LazyLoad>
             </div>
@@ -58,4 +58,4 @@ const AboutUs = () => {
     )
 }
 
-export default AboutUs;
+export default memo(AboutUs);

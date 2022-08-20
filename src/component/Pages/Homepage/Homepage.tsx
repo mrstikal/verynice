@@ -1,6 +1,8 @@
-import React from 'react'
+import React, { memo } from 'react'
 import styles from './Homepage.module.css'
 import homeImage from '../../../assets/image/home.jpg'
+import LazyLoad from 'react-lazyload'
+import Preloader from '../../Preloader/Preloader'
 
 
 const Homepage = () => {
@@ -11,7 +13,9 @@ const Homepage = () => {
             <h1 className={styles.light}>Už žádné imitace v&nbsp;podobě plakátů, pohlednic nebo jiných kopií!</h1>
 
             <div className={styles.home_image}>
-                <img src={homeImage} alt=''></img>
+                <LazyLoad height={250} resize={true} placeholder={<Preloader />}>
+                    <img src={homeImage} alt=''></img>
+                </LazyLoad>
             </div>
 
             <h2 className={styles.light}>
@@ -40,4 +44,4 @@ const Homepage = () => {
     )
 }
 
-export default Homepage;
+export default memo(Homepage);

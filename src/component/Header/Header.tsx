@@ -1,18 +1,10 @@
-import React from 'react';
+import React from 'react'
 import Navigation from '../Navigation/Navigation'
-import global_styles from '../../App.module.css';
-import styles from './Header.module.css';
+import global_styles from '../../App.module.css'
+import styles from './Header.module.css'
 
 
-interface IHeader {
-    currentPage: number,
-    menuItems: Array<{index: number, text: undefined | string;}>,
-    pageChangeHandler(e: number): void
-}
-
-const Header = (props: IHeader) => {
-
-    const { currentPage, pageChangeHandler, menuItems } = props
+const Header = () => {
 
     return (
         <>
@@ -24,11 +16,7 @@ const Header = (props: IHeader) => {
 
                     <div className={global_styles.logo}></div>
 
-                    <Navigation
-                        menuItems={menuItems}
-                        currentPage={currentPage}
-                        pageChangeHandler={pageChangeHandler}
-                    />
+                    <Navigation />
 
                 </div>
 

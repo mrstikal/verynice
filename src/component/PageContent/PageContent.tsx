@@ -1,18 +1,32 @@
-import React, { Suspense, LazyExoticComponent, ComponentType } from 'react'
+import React, { Suspense, useContext, useEffect } from 'react'
 import global_styles from '../../App.module.css'
 import styles from './PageContent.module.css'
+import { useLocation } from 'react-router-dom'
+import PagesConfig, { CATALOG_PAGE } from '../../config/PagesConfig'
+import Preloader from '../Preloader/Preloader'
+import { remeberedCatalogSettings } from '../../App'
+import { orderByOptions, filterOptions } from '../../config/ProductConfig'
 
-interface IPageContent {
-    pages: LazyExoticComponent<ComponentType<any>>[],
-    currentPage: number
-}
+const PageContent = () => {
 
-const PageContent = (props: IPageContent) => {
+    const { setOrder, setFilter } = useContext(remeberedCatalogSettings)
 
-    const { currentPage, pages } = props;
+    /* get module from router loaction */
+    const location = useLocation();
+    const toFind = location.pathname.replace('/', '')
+    const template = PagesConfig.find(o => o.url === toFind)?.template;
 
-    /* get current page component */
-    const Component = pages[currentPage];
+    /* lazy import appropriate component */
+    const Component = React.lazy(() => import(`../Pages/${template}/${template}`));
+
+    /* detect if current page is catalog */
+    useEffect(() => {
+        if (template !== CATALOG_PAGE) {
+            setOrder(orderByOptions[0])
+            setFilter(filterOptions[0])
+        }
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [Component])
 
     return (
 
@@ -21,7 +35,7 @@ const PageContent = (props: IPageContent) => {
             <div className={`${global_styles.inner_wrapper} ${styles.page_content_wrapper} ${global_styles.auto_margin}`}>
 
                 {/* page were imported via lazy, so we need render it within Suspense */}
-                <Suspense>
+                <Suspense fallback={<Preloader />}>
                     {Component && <Component />}
                 </Suspense>
 

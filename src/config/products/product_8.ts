@@ -8,7 +8,8 @@ const product_8: IProduct = {
     price: 28,
     popularity: 6,
     categories: ['Moře', 'Slunce', 'Vodní hladiny'],
-    image: '13.jpg'
+    image: '13.jpg',
+    url: 'katalog/zapad-slunce'
 }
 
 export default product_8;

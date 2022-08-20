@@ -8,7 +8,8 @@ const product_7: IProduct = {
     price: 5,
     popularity: 8,
     categories: ['Krajiny', 'Moře', 'Cesty'],
-    image: '10.jpg'
+    image: '10.jpg',
+    url: 'katalog/cesta-k-mori'
 }
 
 export default product_7;

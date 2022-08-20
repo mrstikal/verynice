@@ -1,11 +1,17 @@
 import React, { useEffect, useLayoutEffect, useState, useRef } from 'react';
 import styles from './Navigation.module.css';
-import { IHeader } from '../Header/Header'
+import { NavLink } from "react-router-dom";
+import PagesConfig from '../../config/PagesConfig'
 
+const Navigation = () => {
 
-const Navigation = (props: IHeader) => {
+    /* create menu items from page configuration */
+    const menuItems: Array<{ index: number, text: string, url: string }> = [];
 
-    const { menuItems, currentPage, pageChangeHandler } = props
+    PagesConfig.forEach((value: any, index: number) => {
+        const menuItem = { index: index, text: value.title, url: value.url }
+        menuItems.push(menuItem)
+    })
 
     /* reference to menu component */
     const menuRef = useRef<HTMLDivElement>(null)
@@ -20,7 +26,7 @@ const Navigation = (props: IHeader) => {
     }
 
     /* close responsive menu on click outside */
-    const closeOpenMenu = ({target}: MouseEvent) => {
+    const closeOpenMenu = ({ target }: MouseEvent) => {
         if (menuRef.current && menuOpened && !menuRef.current?.contains(target as Node)) {
             setMenuOpened(false)
         }
@@ -63,17 +69,20 @@ const Navigation = (props: IHeader) => {
 
     return (
         <>
+
+
             {!isResponsive &&
                 <div className={styles.menu_wrapper} ref={menuRef}>
+
                     {(Array.isArray(menuItems) && menuItems.length > 0) && menuItems.map((item: any, index: number) => {
                         return (
-                            <div
+                            <NavLink
                                 key={index}
-                                className={`${styles.menu_item} ${index === currentPage ? `${styles.active}` : ''}`}
-                                onClick={() => pageChangeHandler(index)}
+                                className={({ isActive }) => isActive ? `${styles.menu_item} ${styles.active}` : styles.menu_item}
+                                to={`/${item.url}`}
                             >
                                 {item.text}
-                            </div>
+                            </NavLink>
                         )
                     })}
                 </div>
@@ -101,13 +110,14 @@ const Navigation = (props: IHeader) => {
                         <div className={styles.responsive_menu_holder}>
                             {(Array.isArray(menuItems) && menuItems.length > 0) && menuItems.map((item: any, index: number) => {
                                 return (
-                                    <div
+                                    <NavLink
                                         key={index}
-                                        className={`${styles.responsive_menu_item} ${index === currentPage ? `${styles.active}` : ''}`}
-                                        onClick={() => { pageChangeHandler(index); setMenuOpened(false) }}
+                                        className={({ isActive }) => isActive ? `${styles.responsive_menu_item} ${styles.active}` : styles.responsive_menu_item}
+                                        onClick={() => { setMenuOpened(false) }}
+                                        to={`/${item.url}`}
                                     >
                                         {item.text}
-                                    </div>
+                                    </NavLink>
                                 )
                             })}
                         </div>
