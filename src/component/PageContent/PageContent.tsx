@@ -24,6 +24,8 @@ const PageContent = () => {
         if (template !== CATALOG_PAGE) {
             setOrder(orderByOptions[0])
             setFilter(filterOptions[0])
+        sessionStorage.removeItem('catalogScrollPosition')
+
         }
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [Component])
